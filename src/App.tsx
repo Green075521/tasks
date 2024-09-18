@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import cat from "./assets/images/suzie.png";
 import { Button, Col, Container, Row } from "react-bootstrap";
 
 function App(): React.JSX.Element {
@@ -12,7 +13,7 @@ function App(): React.JSX.Element {
                 <Row>
                     <Col>
                         <img
-                            src="../assets/images/pet-ada.jpg"
+                            src={cat}
                             alt="A cat behind a computer monitor peeking over the monitor"
                         />
                         <div
