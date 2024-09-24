@@ -43,11 +43,16 @@ export function stringsToIntegers(numbers: string[]): number[] {
  */
 // Remember, you can write functions as lambdas too! They work exactly the same.
 export const removeDollars = (amounts: string[]): number[] => {
-    //First map: Remove any "$" symbols at the beggining of an amount
-    //Second map: convert string to int
-    const result = amounts
-        .map((a: string): string => (a.charAt(0) === "$" ? a.slice(1) : a))
-        .map((a: string): number => (parseInt(a) ? parseInt(a) : 0));
+    // If the element a can be parsed to an int
+    // or if the element a without the first character can be parsed to an int
+    // use that value (prefering to not remove character)
+    // else
+    // use 0
+    const result = amounts.map((a: string): number =>
+        parseInt(a) || parseInt(a.slice(1)) ?
+            parseInt(a) || parseInt(a.slice(1))
+        :   0,
+    );
     return result;
 };
 
