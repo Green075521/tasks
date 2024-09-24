@@ -5,7 +5,14 @@
  * the number twice.
  */
 export function bookEndList(numbers: number[]): number[] {
-    return numbers;
+    //Handle the case of empty input list
+    if (numbers.length == 0) {
+        return [];
+    }
+    //Handle cases of input list length >= 1
+    //If input is length 1, then [0] and [in.length-1] both refer to the same element, which is desired.
+    const numbersInside = [numbers[0], numbers[numbers.length - 1]];
+    return numbersInside;
 }
 
 /**
