@@ -128,5 +128,26 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    return [];
+    // Determine where first negative element is, if any
+    let index: number = values.findIndex((n: number): boolean => n < 0);
+    // Initialize numbers to sum as all elements
+    const numbersToSum = [...values];
+    // If there was a negative element
+    if (index >= 0) {
+        // Get rid of the negative value and all values after it
+        numbersToSum.splice(index, numbersToSum.length - index);
+        // Change the index to point to element after the first negative
+        index += 1;
+    } else {
+        // Change the index to point to the end of the list
+        index = values.length;
+    }
+    //Calculate the sum of the elements
+    let sum: number = numbersToSum.reduce(
+        (currentSum: number, n: number) => currentSum + n,
+        0,
+    );
+    const result = [...values];
+    result.splice(index, 0, sum);
+    return result;
 }
