@@ -142,12 +142,14 @@ export function injectPositive(values: number[]): number[] {
         // Change the index to point to the end of the list
         index = values.length;
     }
-    //Calculate the sum of the elements
+    // Calculate the sum of the elements
     let sum: number = numbersToSum.reduce(
         (currentSum: number, n: number) => currentSum + n,
         0,
     );
+    // Prepare copy of values as result
     const result = [...values];
+    // Insert sum into the result
     result.splice(index, 0, sum);
     return result;
 }
